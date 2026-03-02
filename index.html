@@ -23,8 +23,7 @@
 
 <div class="section">
   <h2>現有源初之星</h2>
-  <div class="input-row"><span class="label">S1源初之星：</span><input type="text" id="s1-StarScore"></div>
-  <div class="input-row"><span class="label">S2源初之星：</span><input type="text" id="s2-StarScore"></div>
+  <div class="input-row"><span class="label">現有源初之星：</span><input type="text" id="NowStarScore"></div>
 </div>
 
 <div class="section">
@@ -153,7 +152,7 @@
     'wind1', 'wind2', 'wind3', 'wind4',
     'water1', 'water2', 'water3', 'water4',
     'fire1', 'fire2', 'fire3', 'fire4',
-    's1-StarScore', 's2-StarScore',
+    'NowStarScore',
     ];
 
     // 檢查是否有任何 S3 欄位被填值
@@ -166,8 +165,7 @@
       }
     }
 
-    const s1StarScore  = parseLevel(document.getElementById('s1-StarScore').value, base=0) || 0;
-    const s2StarScore  = parseLevel(document.getElementById('s2-StarScore').value, base=0) || 0;
+    const AllStarScore  = parseLevel(document.getElementById('NowStarScore').value, base=0) || 0;
 
     const s3RoleLevel   = parseLevel(document.getElementById('s3-RoleLevel').value) || 0;
     const s3NowEXP  = document.getElementById('s3-NowEXP').value || 0;
@@ -226,7 +224,7 @@
     if (!hasS3Input) {
       document.getElementById('score').textContent = '—';
       document.getElementById('earned').textContent = '—';
-      document.getElementById('total').textContent = Number(document.getElementById('s1-StarScore').value || 0) + Number(document.getElementById('s2-StarScore').value || 0);
+      document.getElementById('total').textContent = Number(document.getElementById('NowStarScore').value || 0);
       return;  // 直接結束，不計算
     }
 
@@ -248,7 +246,7 @@
     //totalScore += ItemRelicExtra * 26;                             // 遺物
 
     const earnedStars = Math.floor(totalScore / 13) + 65;
-    const totalStars = s1StarScore + s2StarScore + earnedStars;
+    const totalStars = AllStarScore + earnedStars;
 
     document.getElementById('RoleScore').textContent = RoleScore;
     document.getElementById('EquiScore').textContent = EquiScore;
