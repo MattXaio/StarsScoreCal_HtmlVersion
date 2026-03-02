@@ -1,0 +1,2 @@
+# StarsScoreCal_HtmlVersion
+杖劍傳說賽季養成分數計算網頁版
